@@ -262,6 +262,10 @@ class DetailScreen extends React.Component {
                                 /> 
                             </Block>
         }
+
+        const _img = menu.image.split('/')
+        const img = "https://centrech.net/storage/images/menu/"+_img[_img.length-1]
+    
         
 
         return(
@@ -297,7 +301,7 @@ class DetailScreen extends React.Component {
                 }} >
                 
                 <ImageBackground
-                source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrc_vNZ6nr52bB35nNP7X-DA6jQ5eLgqSncg&usqp=CAU'}}
+                source={{uri:img}}
                 style={{height:200, padding: 0,zIndex: 1}} 
                 >
                 </ImageBackground>

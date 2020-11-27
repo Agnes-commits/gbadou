@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Image, TouchableWithoutFeedback, View } from 'react-native';
+import { StyleSheet,  ActivityIndicator, View } from 'react-native';
 import { Block, Text, theme } from 'galio-framework'; 
+import { Image } from 'react-native-elements';
 import styles from '../assets/css/cardStyle';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Badge } from 'react-native-elements';
@@ -17,14 +18,16 @@ const Card = (props) => {
       styles.imageContainer, 
       styles.horizontalStyles ,
       styles.shadow
-    ]; 
-
+    ];
+    
+    const _img = props.item.image.split('/')
+    const img = "https://centrech.net/storage/images/menu/"+_img[_img.length-1]
     return ( 
       <TouchableOpacity onPress={() => props.onPress(props.item.id)}> 
       <Block key={props.item.id} row={true} card flex style={cardContainer}>
         
         <Block flex style={imgContainer}>
-          <Image  source={{uri:'https://sf2.bibamagazine.fr/wp-content/uploads/biba/2016/11/Comment-reussir-ses-photos-de-nourriture-sur-Instagram.jpg'}} style={imageStyles} />
+          <Image  source={{uri:img}} style={imageStyles}  PlaceholderContent={<ActivityIndicator size="small" color="#ffa800"/>} />
         </Block>
 
         <Block flex space="between" style={styles.cardDescription}>
