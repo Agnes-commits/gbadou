@@ -17,19 +17,19 @@ class LoginScreen extends React.Component  {
   }
 
   handleSubmit = values => {  
+   
     this.props.fetchLogin(values) 
     this.show()
-    key = ""; 
-    store.dispatch(fetchingLoginFailure(key))
+    
     
   }
 
   show = () => {
-    if(this.props.user.errorMessage!=""){
+    if(this.props.user.errorMessage){
       Toast.show({
-        type: 'error',
+        type: 'info',
         position: 'top',
-        text1: 'Erreur',
+        text1: 'Notification',
         text2: this.props.user.errorMessage,
         visibilityTime: 4000,
         autoHide: true,
@@ -78,7 +78,7 @@ class LoginScreen extends React.Component  {
                    
                 </TouchableOpacity>
                 <Button style={styles.center} round color="warning"
-                  onPress={formikProps.handleSubmit}>
+                  onPress={formikProps.handleSubmit}> 
                   Se connecter
                 </Button>
                 <View style={styles.centerView}>

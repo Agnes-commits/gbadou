@@ -120,10 +120,11 @@ export const fetchLogin = (values) => {
         try{
             let response = await fetch('https://centrech.net/api/login',settings)
             let json = await response.json()
-            
+            console.log(json)
             if (response.ok) {
                 dispatch(fetchingLoginSucess(json))
-                storeData(json) 
+                dispatch(fetchingLoginFailure("Connexion en cours..."))
+                storeData(json)  
             }else{
                 
                 dispatch(fetchingLoginFailure(json.password[0]))
@@ -281,6 +282,7 @@ export const sendOrder = () => {
             if (response.ok) {
                const success = "Commande envoyé avec succès"
                dispatch(fetchingOrderSucess(success))
+               
             }
             else{
                 //const success = "Success"

@@ -79,6 +79,7 @@ class CartScreen extends React.Component{
 
   commande = () => {
     this.props.sendOrder()
+    console.log(this.props.order.success)
     if(this.props.order.success){
       this.show(this.props.order.success)
       this.props.navigation.navigate('Menu')

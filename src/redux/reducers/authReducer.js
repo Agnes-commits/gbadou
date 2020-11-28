@@ -9,7 +9,7 @@ import {FETCHING_LOGIN_REQUEST,
 
 const initialState = {
     isLoading: "true",
-    errorMessage: "OK je fonctionne",
+    errorMessage: null,
     token: null,
     userInfo: {},
     user: null
