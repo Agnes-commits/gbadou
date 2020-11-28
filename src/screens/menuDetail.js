@@ -149,7 +149,7 @@ class DetailScreen extends React.Component {
         }
 
         const item = {
-            variand_id: this.state.variant_id,
+            variant_id: this.state.variant_id,
             extra: extras,
             quantity: this.state.value,
             price: prix,
@@ -171,7 +171,7 @@ class DetailScreen extends React.Component {
             quantity: this.state.value,
             price: prix,
             id: menu.id,
-            variand_id:this.state.variant_id
+            variant_id:this.state.variant_id
         }
        
         this.props.setItem({item:item,detail:detail}) 
@@ -263,14 +263,10 @@ class DetailScreen extends React.Component {
                             </Block>
         }
 
-        const _img = menu.image.split('/')
-        const img = "https://centrech.net/storage/images/menu/"+_img[_img.length-1]
-    
-        
-
         return(
             <ScrollView style={{
                 backgroundColor: "#e9e9e9", 
+                marginBottom:20
                }} >
                 <View style={{
                     backgroundColor: "#e9e9e9",
@@ -301,7 +297,7 @@ class DetailScreen extends React.Component {
                 }} >
                 
                 <ImageBackground
-                source={{uri:img}}
+                source={{uri:"https://centrech.net/storage/images/menu/"+menu.image}}
                 style={{height:200, padding: 0,zIndex: 1}} 
                 >
                 </ImageBackground>
@@ -316,18 +312,18 @@ class DetailScreen extends React.Component {
                             zIndex: 2
                             }}
                         >
-                            {menu.name.charAt(0).toUpperCase() + menu.name.slice(1)}
+                            {menu.name && menu.name.charAt(0).toUpperCase() + menu.name.slice(1)}
                         </Text>
                         <Text
                             size={16}
                             muted
                             style={{
-                            textAlign: 'justify',
-                            zIndex: 2,
-                            lineHeight: 25,
-                            color: '#9A9A9A',
-                            }}
-                        > {menu.description.charAt(0).toUpperCase() + menu.description.slice(1)}
+                                textAlign: 'justify',
+                                zIndex: 2,
+                                lineHeight: 25,
+                                color: '#9A9A9A',
+                            }} 
+                        > {menu.description && menu.description.charAt(0).toUpperCase() + menu.description.slice(1)}
                         </Text>
                     </Block>       
                 </Block>

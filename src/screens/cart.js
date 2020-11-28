@@ -2,6 +2,7 @@ import React from 'react';
 import { theme,Input, Block,Button,Text, Icon } from 'galio-framework';
 import { View,ScrollView ,FlatList, Platform} from 'react-native';
 import Header from './header';
+import Toast from 'react-native-toast-message';
 import { Card } from 'react-native-elements'
 import styles from '../assets/css/menuStyle';
 import { removeOrder,setOrderPrice,sendOrder } from '../redux/actions/dataActions';
@@ -32,7 +33,7 @@ const Item = (props) => {
                 </Text>
            
             <Block right>
-                <TouchableOpacity onPress={()=>{remove(item.id,item.price)}}>
+                <TouchableOpacity onPress={()=>{remove(item.variant_id,item.price)}}>
                   <Text style={{color:"red"}}>Supprimer</Text>
                 </TouchableOpacity>
             </Block>
@@ -52,16 +53,39 @@ class CartScreen extends React.Component{
   removeItem(id,price) {
     let item,detail;
 
-    item = this.props.order.items.filter(ex => ex.variand_id !== id)
-    detail = this.props.order.details.filter(ex => ex.variand_id !== id)
+    item = this.props.order.items.filter(ex => ex.variant_id !== id)
+    detail = this.props.order.details.filter(ex => ex.variant_id !== id)
     
     this.props.removeOrder({item:item,detail:detail}); 
     this.props.setOrderPrice(this.props.order.total-parseFloat(price))
-  }  
+  } 
+  
+  show = (message) => {
+    
+      Toast.show({
+        type: 'info',
+        position: 'top',
+        text1: 'Notification',
+        text2: message,
+        visibilityTime: 4000,
+        autoHide: true,
+        topOffset: 30,
+        bottomOffset: 40,
+        onShow: () => {},
+        onHide: () => {}
+      });
+    
+  }
 
   commande = () => {
-    alert('ok')
     this.props.sendOrder()
+    if(this.props.order.success){
+      this.show(this.props.order.success)
+      this.props.navigation.navigate('Menu')
+    }
+    if(this.props.order.error){
+      this.show(this.props.order.error)
+    }
   }
 
   

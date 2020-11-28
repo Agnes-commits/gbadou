@@ -279,7 +279,7 @@ export const sendOrder = () => {
             let json = await response.json()
             console.log(json)
             if (response.ok) {
-               const success = "Success"
+               const success = "Commande envoyé avec succès"
                dispatch(fetchingOrderSucess(success))
             }
             else{

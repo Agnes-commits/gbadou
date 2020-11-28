@@ -14,8 +14,8 @@ const initialState = {
     total: 0,
     items: [],
     details:[],
-    success: "",
-    error: ""
+    success: null,
+    error: null
 }
 
 const orderReducer =  (state=initialState, action) => {
