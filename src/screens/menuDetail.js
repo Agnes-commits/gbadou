@@ -369,7 +369,7 @@ class DetailScreen extends React.Component {
                             iconFamily="antdesign" 
                             color="warning" 
                             iconColor="#fff" 
-                            style={{textAlign:"center", justifyContent: 'center',marginLeft:15 ,}}
+                            style={{width:180,textAlign:"center", justifyContent: 'center',marginLeft:15 ,paddingHorizontal: 5,}}
                             onPress={() => this.addToCart()}
                             >Ajouter au panier</Button>
                     </View>
